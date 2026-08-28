@@ -1,0 +1,21 @@
+impl Solution {
+    pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
+        let n = nums.len();
+        let mut answer = vec![0i32; n];
+        
+        let mut prefix = 1;
+        let mut suffix = 1;
+
+        for i in 0..n {
+            answer[i] = prefix;
+            prefix *= nums[i];
+        }
+
+        for i in (0..n).rev() {
+            answer[i] *= suffix;
+            suffix *= nums[i];
+        }
+
+        answer
+    }
+}
